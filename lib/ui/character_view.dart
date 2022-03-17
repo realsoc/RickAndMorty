@@ -15,7 +15,7 @@ Widget buildCharacterCircleAvatar(Character character) {
           ],
         ),
         child: CircleAvatar(
-            radius: 100.0, backgroundImage: NetworkImage(character.imageUrl)),
+            radius: 80.0, backgroundImage: NetworkImage(character.imageUrl)),
       ),
       Padding(
         padding: const EdgeInsets.all(20),
@@ -43,13 +43,18 @@ Widget _buildVerticalLayout(Character character) {
 
 Widget _buildHorizontalLayout(Character character) {
   return Row(
-    children: [
-      buildCharacterCircleAvatar(character),
-      ListView(
-        children: character.episodes.map((e) => Text(e)).toList(),
-      )
-    ],
-  );
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      mainAxisSize: MainAxisSize.max,
+      children: [
+        buildCharacterCircleAvatar(character),
+        Expanded(child: Center(
+          child: ListView(
+            scrollDirection: Axis.vertical,
+            children: character.episodes.map((e) => Text(e, textAlign: TextAlign.center,))
+                .toList(),
+          ),
+        ),),
+      ]);
 }
 
 Widget buildCharacterView(Character character) {
