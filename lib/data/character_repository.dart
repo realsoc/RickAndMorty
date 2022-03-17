@@ -20,7 +20,6 @@ class HttpCharacterRepository implements CharacterRepository {
       uri: api.characters(),
       builder: (data) => Character.fromListJson(data),
     );
-
   }
 
   Future<T> _getData<T>({
@@ -34,10 +33,11 @@ class HttpCharacterRepository implements CharacterRepository {
           final data = json.decode(response.body);
           return builder(data);
         default:
-          throw Error();
+          throw Exception('Error ${response.statusCode} while getting data '
+              'from server');
       }
     } on SocketException catch (_) {
-      throw Error();
+      throw Exception('Socket exception');
     }
   }
 }
