@@ -34,7 +34,8 @@ Widget _buildVerticalLayout(Character character) {
       children: [
         buildCharacterCircleAvatar(character),
         Column(
-          children: character.episodes.map((e) => Text(e)).toList(),
+          children: character.episodes.map((e) => ListTile(title: Text(e)))
+              .toList(),
         )
       ],
     ),
@@ -50,7 +51,8 @@ Widget _buildHorizontalLayout(Character character) {
         Expanded(child: Center(
           child: ListView(
             scrollDirection: Axis.vertical,
-            children: character.episodes.map((e) => Text(e, textAlign: TextAlign.center,))
+            children: character.episodes.map((e) => ListTile(title: Text(e,
+              textAlign: TextAlign.center,)))
                 .toList(),
           ),
         ),),

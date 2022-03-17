@@ -1,6 +1,3 @@
-
-import 'dart:developer';
-
 class Character{
   int id;
   String status;
